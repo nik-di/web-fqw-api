@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const packageValidator = require('validator');
-const { incorrectPathInSchema } = require('../app-config');
+const { incorrectPathInSchema, articleNotFound } = require('../constants/en_messages');
+const NotFoundError = require('../utils/NotFoundError');
 
 const articleSchema = new mongoose.Schema({
   keyword: { type: String, required: true },
@@ -42,6 +43,19 @@ const articleSchema = new mongoose.Schema({
     required: true,
     select: false,
   },
-});
+}, { versionKey: false });
+
+articleSchema.statics.findArticle = function findArticle(articleId) {
+  return this.findById(articleId)
+    .orFail(new NotFoundError(articleNotFound))
+    .select('+owner')
+    .then((user) => user);
+};
+
+articleSchema.methods.toJSON = function toJSON() {
+  const obj = this.toObject();
+  delete obj.owner;
+  return obj;
+};
 
 module.exports = mongoose.model('article', articleSchema);
