@@ -5,9 +5,9 @@
   "main": "app.js",
   "scripts": {
     "start": "node app/app.js",
-    "dev": "nodemon app/app.js",
+    "dev": "NODE_ENV=development nodemon app/app.js",
     "inspect": "node --inspect app/app.js",
-    "lint": "npx eslint --fix app/app.js && npx eslint app/app.js"
+    "lint": "eslint --ext .js app --fix"
   },
   "repository": {
     "type": "git",
