@@ -1,4 +1,5 @@
 const express = require('express');
+const { articleIdCelebrate, articlePostCelebrate } = require('../middlewares/celebrate');
 
 const articlesRouter = express.Router();
 const {
@@ -6,7 +7,7 @@ const {
 } = require('../controllers/articles');
 
 articlesRouter.get('/', getArticles);
-articlesRouter.post('/', createArticle);
-articlesRouter.delete('/:articleId', deleteArticle);
+articlesRouter.post('/', articlePostCelebrate, createArticle);
+articlesRouter.delete('/:articleId', articleIdCelebrate, deleteArticle);
 
 module.exports = articlesRouter;
