@@ -5,18 +5,18 @@ const { internalServerError } = require('../constants/en_messages');
 module.exports.errorHandler = (err, req, res, next) => { // eslint-disable-line
   const { statusCode = 500, message } = err;
   if (isCelebrate(err)) {
-    res.status(400).send({ status: 400, message: CelebrateError(err.joi).message });
+    res.status(400).send({ message: CelebrateError(err.joi).message });
     return;
   }
 
   if (err instanceof mongoose.Error.ValidationError) {
     const errors = Object.values(err.errors).map((error) => error.message);
-    res.status(400).send({ status: statusCode, message: { ...errors } });
+    res.status(400).send({ message: { ...errors } });
     return;
   }
 
   const resultMessage = statusCode === 500 ? internalServerError : message;
   res
     .status(statusCode)
-    .send({ status: statusCode, message: resultMessage });
+    .send({ message: resultMessage });
 };
