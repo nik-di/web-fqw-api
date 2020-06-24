@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const { isCelebrate, CelebrateError } = require('celebrate');
 const { internalServerError } = require('../constants/en_messages');
 
-module.exports.errorHandler = (err, req, res, next) => { // eslint-disable-line
+module.exports.errorHandler = (err, req, res, next) => { // eslint-disable-next-line no-unused-vars
   const { statusCode = 500, message } = err;
   if (isCelebrate(err)) {
     res.status(400).send({ message: CelebrateError(err.joi).message });
@@ -18,5 +18,5 @@ module.exports.errorHandler = (err, req, res, next) => { // eslint-disable-line
   const resultMessage = statusCode === 500 ? internalServerError : message;
   res
     .status(statusCode)
-    .send({ message: resultMessage });
+    .send({ statusCode, message: resultMessage });
 };

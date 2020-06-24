@@ -2,7 +2,8 @@
 
 |Public IP address|Domains|Type|Protocols|
 |:-------------:|:-------------:|:-----:|:---:|
-|130.193.48.5|api.news-explorer.website|API|http, https|
+|84.201.129.31|api.news-explorer.website|API|http, https|
+|84.201.129.31|news-explorer.website|Frontend|http, https|
 
 `Версия 0.1.0`
 ## Fifteenth project work of the web-development course

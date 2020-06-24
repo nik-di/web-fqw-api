@@ -1,15 +1,15 @@
 const cors = require('cors');
 const { CORS_WHITELIST } = require('../app-config');
 
-const corsOptionsDelegate = (req, callback) => {
-  const { origin } = req.headers;
-  let corsOptions;
-  if (CORS_WHITELIST.indexOf(origin) !== -1) {
-    corsOptions = { origin: true };
-  } else {
-    corsOptions = { origin: false };
-  }
-  callback(null, corsOptions);
+const corsOptions = {
+  credentials: true,
+  origin: (origin, callback) => {
+    if (CORS_WHITELIST.includes(origin)) {
+      callback(null, origin);
+    } else {
+      callback(new Error(`Origin: ${origin} is not allowed`));
+    }
+  },
 };
 
-module.exports.corsControl = cors(corsOptionsDelegate);
+module.exports.cors = cors(corsOptions);

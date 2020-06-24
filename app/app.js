@@ -1,7 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
-const { corsControl } = require('./middlewares/cors');
 const { MONGO_URL, PORT } = require('./app-config');
 const { apiLimiter } = require('./utils/apiLimiter');
 const router = require('./routes/index');
@@ -15,7 +14,6 @@ mongoose.connect(MONGO_URL, {
 
 const app = express();
 
-app.use(corsControl);
 app.use(helmet());
 app.use(apiLimiter);
 app.use('/', router);

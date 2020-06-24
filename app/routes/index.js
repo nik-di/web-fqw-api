@@ -12,12 +12,13 @@ const { signupUser, signinUser, logOut } = require('../controllers/users');
 const { pageNotFound } = require('../constants/en_messages');
 const { userSignupCelebrate, userSigninCelebrate } = require('../middlewares/celebrate');
 const NotFoundError = require('../utils/NotFoundError');
+const { cors } = require('../middlewares/cors');
 
 router.use(cookieParser());
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
-
 router.use(requestLogger);
+router.use(cors);
 router.post('/signup', userSignupCelebrate, signupUser);
 router.post('/signin', userSigninCelebrate, signinUser);
 router.use('*', auth);
