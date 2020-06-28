@@ -17,7 +17,7 @@ const MIN_PASS_LENGTH = 6;
 const SEVEN_DAY_IN_MILLISECONDS = 3600000 * 24 * 7;
 const apiLimiter = new RateLimit({
   windowMs: 10 * 60 * 1000,
-  max: 100,
+  max: 500,
 });
 
 module.exports = {
