@@ -12,6 +12,7 @@ const CORS_WHITELIST = [
   'https://news-explorer.website',
   'http://www.news-explorer.website',
   'https://www.news-explorer.website',
+  'https://nik-di.github.io'
 ];
 const MIN_PASS_LENGTH = 6;
 const SEVEN_DAY_IN_MILLISECONDS = 3600000 * 24 * 7;
