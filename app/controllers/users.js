@@ -39,7 +39,7 @@ module.exports.signinUser = (req, res, next) => {
           {
             maxAge: SEVEN_DAY_IN_MILLISECONDS,
             httpOnly: true,
-            // sameSite: true,
+            sameSite: true,
           },
         )
         .end();
