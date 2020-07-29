@@ -49,7 +49,7 @@ articleSchema.statics.findArticle = function findArticle(articleId) {
   return this.findById(articleId)
     .orFail(new NotFoundError(articleNotFound))
     .select('+owner')
-    .then((user) => user);
+    .then((article) => article);
 };
 
 articleSchema.methods.toJSON = function toJSON() {
