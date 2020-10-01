@@ -2,10 +2,10 @@
 
 |Public IP address|Domains|Type|Protocols|
 |:-------------:|:-------------:|:-----:|:---:|
-|84.201.129.31|api.news-explorer.website|API|http, https|
-|84.201.129.31|news-explorer.website - [News Explorer](https://news-explorer.website)|Frontend|http, https|
+|130.193.36.142|api.news-explorer.website|API|http, https|
+|130.193.36.142|news-explorer.website - [News Explorer](https://news-explorer.website)|Frontend|http, https|
 
-`Версия 0.1.1`
+`Версия 0.2.1`
 ## Fifteenth project work of the web-development course
 Ссылка на проект https://github.com/nik-di/web-fqw-api
 
